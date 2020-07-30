@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 span.c { 
   font-weight: bold; 
   color: #2159D6;

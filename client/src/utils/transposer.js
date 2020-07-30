@@ -301,20 +301,15 @@
 			
 			// Генерация html кода
 			function generate_html($this){
-        console.log($this)
 				var type_br = $this.html().indexOf('<br>'),
 					output = [],
 					lines = (type_br > 0 ? $($this).html().split("<br>") : $($this).text().split("\n"));
 				
 				for(var i = 0; i < lines.length; i++){
           var line = lines[i];
-          
-          // console.log(line)
 					
 					for(var n = 0; n < videlit.length; n++){
-            console.log(line.toLowerCase())
 						if(line.toLowerCase().indexOf(videlit[n]) != -1){
-              console.log('wee')
 							originalText += "\n";
 							line = '<b class="videlit_line">'+ line +'</b>';
 							originalAccord += line + "\n";
