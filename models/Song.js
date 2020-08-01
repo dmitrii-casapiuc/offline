@@ -1,6 +1,9 @@
 const {Schema, model} = require('mongoose')
 
 const songSchema = new Schema({
+  _id: {
+    type: String,
+  },
   title: {
     type: String,
   },

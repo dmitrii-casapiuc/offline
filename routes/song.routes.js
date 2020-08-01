@@ -7,7 +7,7 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const songs = await Song.find({})
+    const songs = await Song.find({}).select('title').exec()
 
     res.status(200).json(songs)
   } catch (error) {

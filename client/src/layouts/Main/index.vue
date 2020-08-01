@@ -4,9 +4,7 @@
 
     <div class="app-wrapper">
       <main class="app-content">
-        <div class="app-page">
-          <router-view />
-        </div>
+        <router-view />
       </main>
     </div>
 
@@ -29,18 +27,15 @@ export default {
 
 <style lang="scss" scoped>
 .app-main-layout {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 
   .app-wrapper {
-    display: flex;
-    flex-grow: 1;
+    min-height: calc(100% - 102px);
 
     .app-content {
-      padding: 50px 30px;
-      width: 100%;
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 40px 15px;
     }
   }
 }
