@@ -1,51 +1,39 @@
 <template>
-  <div class="home">
-    <pre data-key="C">
-      ПРИПЕВ:
-              C         G   D/F#    Em 
-      Славь, душа, Господа, Славь, душа, 
-      C     G   Dsus4  D 
-      Имя Святое Его. 
-        C             Em    C    D  Em 
-      Пой Ему, как никогда, пой, душа, 
-        C     D      C/G   G   C/G   G 
-      Благослови Господа. 
-
-      1 КУПЛЕТ:
-       C        G          D     Em 
-      Солнце встаёт, новый день приходит, 
-      C       G      D    Em 
-      Время опять хвалу воздать 
-          C              G        D             Em
-      За всё, что Ты мне дал, и за каждый новый вдох мой 
-      C2      G       Dsus4   D  G Gsus4 G 
-      Я буду петь и на закате дня. 
-
-      2 КУПЛЕТ:
-      Велик в любви, и даёшь мне милость, 
-      Ты справедлив и так благ ко мне, 
-      За все Твои дела я хочу прославить 
-      Чтоб петь Тебе, есть 10 тысяч причин. 
-
-      3 КУПЛЕТ:
-      И когда мои силы иссякнут 
-      На закате дней, когда время придёт, 
-      Душа моя Тебя да будет славить 
-      Больше, чем даже 10 тысяч лет.
-    </pre>
+  <div v-loading="loading" class="home">
+    <pre :data-key="song.tonality">{{ song.lyrics }}</pre>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
 import Chart from '@/utils/transposer'
+import { fetchSongs } from '@/api/songs'
 
 export default {
   name: 'Home',
-  mounted () {
+  data() {
+    return {
+      loading: true,
+      song: []
+    }
+  },
+  mounted() {
     $(function() {
     	$("pre").transpose()
     })
+  },
+  async created() {
+    await this.getList()
+  },
+  methods: {
+    async getList() {
+      this.loading = true
+      await fetchSongs().then(response => {
+        console.log(response.data[0])
+        this.song = response.data[0]
+        this.loading = false
+      })
+    }
   }
 }
 </script>
