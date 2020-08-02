@@ -34,6 +34,11 @@ import { fetchSongs } from '@/api/songs'
 
 export default {
   name: 'SongList',
+  metaInfo() {
+    return {
+      title: 'Songs'
+    }
+  },
   data() {
     return {
       loading: true,

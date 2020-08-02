@@ -1,20 +1,16 @@
 <template>
   <div class="wrapper-home">
-    <SongList />
+    Home
   </div>
 </template>
 
 <script>
-import SongList from '../../components/SongList'
-
 export default {
   name: 'Home',
-  components: {
-    SongList
+  metaInfo() {
+    return {
+      title: 'Home'
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
