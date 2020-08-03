@@ -6,3 +6,10 @@ export function fetchSongs() {
     method: 'get'
   })
 }
+
+export function fetchSong(id) {
+  return request({
+    url: `/api/songs/${id}`,
+    method: 'get'
+  })
+}

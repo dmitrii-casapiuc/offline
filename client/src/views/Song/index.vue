@@ -1,16 +1,16 @@
 <template>
-  <div v-loading="loading" class="home">
+  <div v-loading="loading" class="wrapper-song">
     <pre :data-key="song.tonality">{{ song.lyrics }}</pre>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
-import Chart from '@/utils/transposer'
-import { fetchSongs } from '@/api/songs'
+import '@/utils/transposer'
+import { fetchSong } from '@/api/songs'
 
 export default {
-  name: 'Home',
+  name: 'Song',
   data() {
     return {
       loading: true,
@@ -18,19 +18,18 @@ export default {
     }
   },
   mounted() {
-    $(function() {
-    	$("pre").transpose()
-    })
+    /* $(function() {
+      $('pre').transpose()
+    }) */
   },
   async created() {
-    await this.getList()
+    await this.getSong()
   },
   methods: {
-    async getList() {
+    async getSong() {
       this.loading = true
-      await fetchSongs().then(response => {
-        console.log(response.data[0])
-        this.song = response.data[0]
+      await fetchSong(this.$route.params.id).then(response => {
+        this.song = response.data
         this.loading = false
       })
     }

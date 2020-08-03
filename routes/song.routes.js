@@ -15,4 +15,13 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  try {
+    const song = await Song.findById(req.params.id)
+    res.status(200).json(song)
+  } catch(error) {
+    errorHandler(res, error, 'tryAgain')
+  }
+})
+
 module.exports = router
