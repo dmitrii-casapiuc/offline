@@ -2,7 +2,7 @@
   <div class="wrapper-header">
     <div class="header">
       <el-menu
-        :default-active="currentUrl"
+        :default-active="activeLink"
         :router="true"
         mode="horizontal"
       >
@@ -10,8 +10,9 @@
           v-for="(route, index) in routes"
           :key="index"
           :index="route.path"
+          :route="{ name: route.title }"
         >
-          <router-link :to="route.path">{{ route.title }}</router-link>
+          {{ route.title }}
         </el-menu-item>
       </el-menu>
     </div>
@@ -26,12 +27,13 @@ export default {
       routes: [
         { title: 'Home', path: '/', icon: 'el-icon-house' },
         { title: 'Songs', path: '/songs', icon: 'el-icon-headset' }
-      ]
+      ],
+      activeLink: null
     }
   },
-  computed: {
-    currentUrl() {
-      return this.$route.path
+  watch: {
+    $route(to, from) {
+      this.activeLink = to.path
     }
   }
 }
