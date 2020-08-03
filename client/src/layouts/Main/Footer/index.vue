@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-footer">
     <div class="footer">
-      Footer
+      © 2020 Offline
     </div>
   </div>
 </template>
