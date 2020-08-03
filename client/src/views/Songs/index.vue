@@ -1,9 +1,10 @@
 <template>
   <div
+    v-loading="loading"
     class="wrapper-song-list"
   >
     <el-table
-      v-loading="loading"
+      v-show="tableData.length"
       class="song-list"
       :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
