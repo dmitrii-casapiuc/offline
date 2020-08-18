@@ -1,4 +1,4 @@
-const webpack = require("webpack")
+const webpack = require('webpack')
 
 module.exports = {
   devServer: {
@@ -12,7 +12,7 @@ module.exports = {
         target: process.env.BASE_URL || process.env.VUE_APP_BASE_API,
         secure: false,
         changeOrigin: true
-      }    
+      }
     }
   },
   chainWebpack: (config) => {
