@@ -43,6 +43,16 @@ export default {
 
 <style lang="scss">
 .song-set-list {
+  margin-bottom: 30px;
+
+  h3 {
+    color: #1f2f3d;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+  }
+
   table tbody tr {
     cursor: pointer;
   }
