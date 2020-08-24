@@ -13,3 +13,10 @@ export function fetchSong(id) {
     method: 'get'
   })
 }
+
+export function fetchSongSet() {
+  return request({
+    url: '/api/song-set',
+    method: 'get'
+  })
+}

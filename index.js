@@ -6,6 +6,7 @@ const path = require('path')
 
 const keys = require('./config/keys')
 const songRoutes = require('./routes/song.routes')
+const songSetRoutes = require('./routes/song-set.routes')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(cors())
 
 // register routes
 app.use('/api/songs', songRoutes)
+app.use('/api/song-set', songSetRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'dist')))
