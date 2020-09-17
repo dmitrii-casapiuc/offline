@@ -58,7 +58,7 @@ export default {
       })
     },
     rowClicked(row) {
-      this.$router.push(`/song/${row._id}`)
+      this.$router.push(`/song/${row.id}`)
     }
   }
 }

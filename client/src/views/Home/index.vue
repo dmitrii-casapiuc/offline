@@ -6,7 +6,7 @@
     <div v-if="songSetData.length" class="wrapper-song-set-list">
       <SongSetList
         v-for="item in songSetData"
-        :key="item._id"
+        :key="item.id"
         :item="item"
       />
     </div>

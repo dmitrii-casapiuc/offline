@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Song = sequelize.define('Song', {
+  const Set = sequelize.define('Set', {
     id: {
       primaryKey: true,
       autoIncrement: true,
@@ -10,15 +10,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    tonality: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    lyrics: {
-      type: DataTypes.TEXT,
+    status: {
+      type: DataTypes.BOOLEAN,
       allowNull: false
     }
   })
 
-  return Song
+  return Set
 }

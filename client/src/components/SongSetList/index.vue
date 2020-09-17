@@ -5,7 +5,7 @@
   >
     <h3>{{ item.title }}</h3>
     <el-table
-      :data="item.songIds"
+      :data="item.sets"
       style="width: 100%"
       @row-click="rowClicked"
     >
@@ -25,17 +25,17 @@ export default {
       type: Object,
       default: () => {
         return {
-          songIds: Array,
+          sets: Array,
           status: Boolean,
           title: String,
-          _id: String
+          id: String
         }
       }
     }
   },
   methods: {
     rowClicked(row) {
-      this.$router.push(`/song/${row._id}`)
+      this.$router.push(`/song/${row.id}`)
     }
   }
 }

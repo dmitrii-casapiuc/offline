@@ -1,21 +1,18 @@
-const {Schema, model} = require('mongoose')
-
-const songSetSchema = new Schema({
-  _id: {
-    type: String,
-  },
-  title: {
-    type: String,
-  },
-  songIds: [
-    {
-      _id: String,
-      title: String
+module.exports = (sequelize, DataTypes) => {
+  const SongSet = sequelize.define('SongSet', {
+    id: {
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    songId: {
+      type: DataTypes.INTEGER
+    },
+    setId: {
+      type: DataTypes.INTEGER
     }
-  ],
-  status: {
-    type: Boolean,
-  }
-})
+  })
 
-module.exports = model('SongSet', songSetSchema)
+  return SongSet
+}

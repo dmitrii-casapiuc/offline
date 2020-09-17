@@ -1,19 +1,15 @@
 
 const express = require('express')
 const cors = require('cors')
-const mongoose = require('mongoose')
 const path = require('path')
 
-const keys = require('./config/keys')
+const db = require('./models/')
 const songRoutes = require('./routes/song.routes')
 const songSetRoutes = require('./routes/song-set.routes')
 
 const app = express()
 
-mongoose.set('useFindAndModify', false)
-
 app.use(express.json({ extended: true }))
-app.use('/uploads', express.static('uploads'))
 app.use(cors())
 
 // register routes
@@ -32,11 +28,7 @@ const PORT = process.env.PORT || 5001
 
 async function start() {
   try {
-    await mongoose.connect(keys.mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    })
+    await db.sequelize.sync()
     app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
   } catch (error) {
     console.log('Server Error', error.message)
