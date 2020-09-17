@@ -1,3 +1,3 @@
 module.exports = {
-  mongoURI: process.env.POSTGRESQL_URL
+  db: process.env.POSTGRESQL_URL
 }
